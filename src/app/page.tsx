@@ -17,13 +17,12 @@ export default async function Home() {
 
   const data = await getData();
 
-  console.log(data);
-
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between gap-8 px-8 py-16 lg:w-1/3 mx-auto">
-      <p className='text-black text-2xl text-center'>Listes des parkings de <br /><span className='font-bold'>La Rochelle</span></p>
+    <main className="flex min-h-screen flex-col items-center justify-between px-8 py-16 lg:w-1/3 mx-auto">
+      <p className='text-black text-2xl text-center font-bold mb-2'>LR Parking</p>
+      <p className='text-black text-center mb-8'>Liste des parkings de <span className='font-bold'>La Rochelle</span> avec le nombre de places disponibles en temps réel.</p>
       {data.records.map((record : any) => (
-        <div key={record.recordid} className="flex flex-col items-center justify-center text-black border-2 border-black rounded-lg h-48 w-full px-4 text-center">
+        <div key={record.recordid} className="flex flex-col items-center justify-center text-black border-2 border-black rounded-lg h-48 w-full px-4 text-center mb-8">
           <p className="text-lg font-bold">{record.fields.nom}</p>
           <p className="text-xl">{record.fields.nb_places_disponibles} / {record.fields.nb_places}</p>
         </div>
