@@ -27,7 +27,7 @@ export default async function Home() {
           <p className="text-xl">{record.fields.nb_places_disponibles} / {record.fields.nb_places}</p>
         </div>
       ))}
-      <p className='text-black'>Made with ❤️ by <a href="" className='underline'>HugooMdra</a></p>
+      <p className='text-black'>Made with ❤️ by <a href="https://twitter.com/hugoomdra" target='_blank' className='underline'>HugooMdra</a></p>
     </main>
   )
 }
