@@ -1,7 +1,9 @@
 import Image from 'next/image'
 
 async function getData() {
-  const res = await fetch('https://api.agglo-larochelle.fr/production/opendata/api/records/1.0/search/dataset=parking___places_disponibles_en_temps_reel&facet=id')
+  const res = await fetch('https://api.agglo-larochelle.fr/production/opendata/api/records/1.0/search/dataset=parking___places_disponibles_en_temps_reel&facet=id',{
+    cache: 'no-store'
+  })
   // The return value is *not* serialized
   // You can return Date, Map, Set, etc.
  
