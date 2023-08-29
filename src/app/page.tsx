@@ -1,3 +1,4 @@
+import Card from '@/components/Card'
 import Map from '@/components/MapComponent'
 import Image from 'next/image'
 
@@ -30,7 +31,7 @@ export default async function Home() {
 
         <div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 w-full'>
           {data.records.map((record: any) => (
-            <Map parking={record} key={record.recordid}></Map>
+            <Card parking={record} key={record.recordid}></Card>
           ))}
         </div>
         <p className='text-black mt-8 text-center'>Made with ❤️ by <a href="https://twitter.com/hugoomdra" target='_blank' className='underline'>HugooMdra</a></p>
