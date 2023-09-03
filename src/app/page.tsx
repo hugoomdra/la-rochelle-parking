@@ -1,6 +1,4 @@
 import Card from '@/components/Card'
-import Map from '@/components/MapComponent'
-import Image from 'next/image'
 
 async function getData() {
   const res = await fetch('https://api.agglo-larochelle.fr/production/opendata/api/records/1.0/search/dataset=parking___places_disponibles_en_temps_reel&facet=id', {
@@ -14,7 +12,12 @@ async function getData() {
     throw new Error('Failed to fetch data')
   }
 
-  return res.json()
+  let data = await res.json()
+
+  return data.records.sort((a: any, b: any) => {
+    return parseInt(a.fields.nb_places_disponibles) < parseInt(b.fields.nb_places_disponibles) ? 1 : -1
+  })
+    
 }
 
 export default async function Home() {
@@ -30,7 +33,7 @@ export default async function Home() {
         <p className='text-black text-center mb-8'>Liste des parkings de <span className='font-bold'>La Rochelle</span> avec le nombre de places disponibles en temps réel.</p>
 
         <div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 w-full'>
-          {data.records.map((record: any) => (
+          {data.map((record: any) => (
             <Card parking={record} key={record.recordid}></Card>
           ))}
         </div>
